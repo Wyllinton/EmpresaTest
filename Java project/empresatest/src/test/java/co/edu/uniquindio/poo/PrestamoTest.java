@@ -9,8 +9,8 @@
 package co.edu.uniquindio.poo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.util.LinkedList;
 import java.util.logging.Logger;
 import org.junit.jupiter.api.Test;
 
@@ -29,9 +29,12 @@ public class PrestamoTest {
         Empleado empleado = new Empleado("Camila Sanchez", "41912026", "camila@gmail.com", "5");
         Cliente cliente = new Cliente("104483382","Luis Jimenez","Masculino", "Armenia", TipoDocumento.PASAPORTE);
         Objeto objeto = new Objeto("Retroexcavadora", "23456", 2, 50000);
-        DetallePrestamo detallePrestamo = new DetallePrestamo(2,3,objeto);
-        Prestamo prestamo = new Prestamo("12345",4,50000,empleado,cliente,detallePrestamo);
-        assertEquals(empleado,prestamo.getEmpleado());
+        LinkedList<DetallePrestamo> detallesPrestamo = new LinkedList<>();
+        detallesPrestamo.add(new DetallePrestamo(2,3,objeto));
+        Prestamo prestamo1 = new Prestamo("12345", 4, 78756, empleado, cliente, detallesPrestamo);
+
+        assertEquals(empleado,prestamo1.getEmpleado());
+
         LOG.info("Finalizando test de prestamo datos completos");
     }
 
