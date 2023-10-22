@@ -1,5 +1,7 @@
 package co.edu.uniquindio.poo;
 
+import java.util.Collection;
+
 public class Prestamo {
     private String codigo;
     private int diasSolicitados;
@@ -7,24 +9,24 @@ public class Prestamo {
     private double valor;
     private Empleado empleado;
     private Cliente cliente;
-    private DetallePrestamo detallePrestamo;
+    private Collection<DetallePrestamo> detallesPrestamos;
+
 
     //Constructor
-    public Prestamo(String codigo, int diasSolicitados, double valor, Empleado empleado, Cliente cliente, DetallePrestamo detallePrestamo){
+    public Prestamo(String codigo, int diasSolicitados, double valor, Empleado empleado, Cliente cliente, Collection<DetallePrestamo> detallesPrestamos){
         assert codigo != null;
         assert diasSolicitados >= 0;
         assert valor >= 0;
         assert empleado != null;
         assert cliente != null;
-        assert detallePrestamo != null;
         this.codigo = codigo;
         this.diasSolicitados = diasSolicitados;
         this.diasTranscurridos = 0;
         this.valor = valor;
         this.empleado = empleado;
         this.cliente = cliente;
-        this.detallePrestamo = detallePrestamo;
-        detallePrestamo.getObjeto().setPrestado(true);
+        this.detallesPrestamos = detallesPrestamos;
+        detallesPrestamos.forEach(detalle -> detalle.getObjeto().setPrestado(true));
     }
 
     //Getters
@@ -52,14 +54,17 @@ public class Prestamo {
         return cliente;
     }
 
-    public DetallePrestamo getDetallePrestamo() {
-        return detallePrestamo;
+    public Collection<DetallePrestamo> getDetallePrestamo() {
+        return detallesPrestamos;
     }
 
     public void devolucionPrestamo(){
-        Objeto objeto = detallePrestamo.getObjeto();
-        objeto.modificarUnidades(detallePrestamo.getUnidadesPrestadas());
-        detallePrestamo.getObjeto().setPrestado(false);
+
+        detallesPrestamos.forEach(prestamo -> {
+            Objeto objeto = prestamo.getObjeto();
+            objeto.modificarUnidades(prestamo.getUnidadesPrestadas());
+            prestamo.getObjeto().setPrestado(false);
+        }); 
     }
 
     @Override
