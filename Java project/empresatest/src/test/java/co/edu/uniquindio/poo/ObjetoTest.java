@@ -74,6 +74,7 @@ public class ObjetoTest {
     public void verificarPrestado() {
         LOG.info("Iniciado test verificar prestado");
         Objeto objeto = new Objeto("Retroexcavadora", "23456", 2, 50000);
+        objeto.setPrestado(true);
         assertTrue(objeto.isPrestado());
         LOG.info("Finalizando test verificar prestado");
     }
