@@ -24,11 +24,11 @@ public class DetallePrestamoTest {
 
     @Test
     public void DetallePrestamoDatosCompletos() {
-        LOG.info("Iniciado test modificar ciudad de residencia del cliente");
+        LOG.info("Iniciado test de detalle prestamo datos completos");
         Objeto objeto = new Objeto("Retroexcavadora", "23456", 2, 50000);
         DetallePrestamo detallePrestamo = new DetallePrestamo(2,3,objeto);
         assertEquals(2, detallePrestamo.getUnidadesPrestadas());
-        LOG.info("Finalizando test modificar ciudad de residencia del cliente");
+        LOG.info("Finalizando test de de detalle prestamo datos completos");
     }
     @Test
     public void DetallePrestamoUnidadesPrestadasMayorUnidadesDisponibles() {
@@ -53,9 +53,9 @@ public class DetallePrestamoTest {
     }
     @Test
     public void DetallePrestamoDatosNulos() {
-        LOG.info("Iniciado test modificar ciudad de residencia del cliente");
+        LOG.info("Iniciado test de detalle prestamo datos nulos");
         Objeto objeto = null;
         assertThrows(Throwable.class, () -> new DetallePrestamo(0,0,objeto));
-        LOG.info("Finalizando test modificar ciudad de residencia del cliente");
+        LOG.info("Finalizando test de detalle prestamo datos nulos");
 }
 }

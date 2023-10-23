@@ -91,7 +91,7 @@ public class EmpresaTest {
         empresa.registrarCliente(cliente3);
         assertEquals(cliente3, empresa.buscarClientePorDocumento("109487302").get());
         
-        LOG.info("Iniciando test buscar cliente por documento");
+        LOG.info("Finalizando test buscar cliente por documento");
     }  
 
     @Test 
@@ -117,7 +117,56 @@ public class EmpresaTest {
 
         LOG.info("Finalizando test registrar lista de prestamos");
     }
+     @Test 
+    public void eliminarPrestamos(){
+        LOG.info("Iniciando test eliminar prestamo");
+
+        Empresa empresa = new Empresa("Prestadora SAS", "34567");
+        Objeto objeto = new Objeto("Retroexcavadora", "23456", 2, 50000);
+        Objeto objeto2 = new Objeto("Balón", "256", 9, 500);
+        Empleado empleado = new Empleado("Camila Sanchez", "41912026", "camila@gmail.com", "5");
+        Cliente cliente = new Cliente("104483382","Luis Jimenez","Masculino", "Armenia", TipoDocumento.PASAPORTE);
+
+        LinkedList<DetallePrestamo> detallesPrestamos1 = new LinkedList<>();
+        detallesPrestamos1.add(new DetallePrestamo(2,3,objeto));
+        Prestamo prestamo1 = new Prestamo("12345", 4, 78756, empleado, cliente, detallesPrestamos1);
+
+        LinkedList<DetallePrestamo> detallesPrestamos2 = new LinkedList<>();
+        detallesPrestamos2.add(new DetallePrestamo(2,4,objeto2) );
+        Prestamo prestamo2 = new Prestamo("23456",6,40000,empleado,cliente,detallesPrestamos2);
+        empresa.registrarPrestamo(prestamo1);
+        empresa.registrarPrestamo(prestamo2);
+        empresa.eliminarPrestamo(prestamo2);
+        assertEquals(1, empresa.getPrestamos().size());
+        assertFalse(empresa.getPrestamos().contains(prestamo2));
+
+        LOG.info("Finalizando test eliminar prestamo");
+    }
+     @Test 
+    public void buscarPrestamoCodigo(){
+        LOG.info("Iniciando test buscar prestamo por código");
+
+        Empresa empresa = new Empresa("Prestadora SAS", "34567");
+        Objeto objeto = new Objeto("Retroexcavadora", "23456", 2, 50000);
+        Objeto objeto2 = new Objeto("Balón", "256", 9, 500);
+        Empleado empleado = new Empleado("Camila Sanchez", "41912026", "camila@gmail.com", "5");
+        Cliente cliente = new Cliente("104483382","Luis Jimenez","Masculino", "Armenia", TipoDocumento.PASAPORTE);
+
+        LinkedList<DetallePrestamo> detallesPrestamos1 = new LinkedList<>();
+        detallesPrestamos1.add(new DetallePrestamo(2,3,objeto));
+        Prestamo prestamo1 = new Prestamo("12345", 4, 78756, empleado, cliente, detallesPrestamos1);
+
+        LinkedList<DetallePrestamo> detallesPrestamos2 = new LinkedList<>();
+        detallesPrestamos2.add(new DetallePrestamo(2,4,objeto2) );
+        Prestamo prestamo2 = new Prestamo("23456",6,40000,empleado,cliente,detallesPrestamos2);
+        empresa.registrarPrestamo(prestamo1);
+        empresa.registrarPrestamo(prestamo2);
     
+        assertTrue(empresa.buscarPrestamoPorCodigo("12345").isPresent());
+
+        LOG.info("Finalizando test buscar prestamo por código");
+    }
+
     @Test 
     public void imprimirListaPrestamos(){
         LOG.info("Iniciando test imprimir lista de prestamos");
@@ -182,7 +231,7 @@ public class EmpresaTest {
         
         assertTrue(empresa.buscarEmpleadoPorCodigo("39487236").isPresent());
         
-        LOG.info("Finalizando test de buscar empleado por cód");
+        LOG.info("Finalizando test de buscar empleado por código");
 
     }
     
@@ -200,6 +249,7 @@ public class EmpresaTest {
         empresa.registrarCliente(cliente4);
         LinkedList<Cliente> clientes = new LinkedList<>(empresa.getClientes());
         assertEquals(2,empresa.obtenerListaClientesMasculinos(clientes).size());
+        
         LOG.info("Finalizando test obtener lista de clientes masculinos");
     }
     @Test 
@@ -224,7 +274,7 @@ public class EmpresaTest {
         LinkedList<Objeto> objetos = new LinkedList<>(empresa.getObjetos());
 
         assertEquals(3, empresa.obtenerListaObjetosPrestadosMayorA20k(objetos).size() );
-        LOG.info("Finalizando test imprimir lista de prestamos");
+        LOG.info("Finalizando test objetos prestados mayor a 20000");
     }
     @Test 
     public void registrarObjeto(){
@@ -284,6 +334,22 @@ public class EmpresaTest {
         
         LOG.info("Iniciando test obtener cantidad unidades prestadas");
 
+    }
+    @Test
+    public void buscarObjetoCodigo(){
+        LOG.info("Iniciado test buscar objeto por código");
+        
+        Empresa empresa = new Empresa("Prestadora SAS", "34567");
+        Objeto objeto = new Objeto("Retroexcavadora", "23456", 2, 50000);
+        Objeto objeto2 = new Objeto("Balón", "83528", 10, 700);
+
+        empresa.registrarObjeto(objeto);
+        empresa.registrarObjeto(objeto2);
+        
+        assertTrue(empresa.buscarObjetoPorCodigo("23456").isPresent());
+        
+
+        LOG.info("Finalizando test buscar objeto por código");
     }
 
 

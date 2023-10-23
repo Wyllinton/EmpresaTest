@@ -36,13 +36,13 @@ public class ClienteTest {
 
     @Test 
     public void modificarCiudadResidenciaNulo(){
-        LOG.info("Iniciado test modificar ciudad de residencia del cliente");
+        LOG.info("Iniciado test modificar ciudad de residencia nulo del cliente");
         
         Cliente cliente = new Cliente("4857305", "Carlos", "Masculino", "Armenia",TipoDocumento.CEDULA);
         
         assertThrows(Throwable.class, ()-> cliente.setCiudadResidencia(null));
 
-        LOG.info("Finalizando test modificar ciudad de residencia del cliente");
+        LOG.info("Finalizando test modificar ciudad de residencia nulo del cliente");
 
     }
     @Test

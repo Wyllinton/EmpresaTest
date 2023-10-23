@@ -24,7 +24,7 @@ public class ObjetoTest {
 
     @Test 
     public void objetoDatosCompletos(){
-        LOG.info("Iniciado test objeto datos completos");
+        LOG.info("Iniciando test objeto datos completos");
         
         Objeto objeto = new Objeto("Retroexcavadora", "23456", 2, 50000);
         
@@ -36,7 +36,7 @@ public class ObjetoTest {
     }
     @Test
     public void objetoDatosNulos() {
-        LOG.info("Iniciado test objeto datos nulos");
+        LOG.info("Iniciando test objeto datos nulos");
 
         assertThrows(Throwable.class, ()-> new Objeto(null,null,0,0));
 
@@ -44,35 +44,35 @@ public class ObjetoTest {
     }
     @Test
     public void objetoUnidadesDisponiblesNegativas() {
-        LOG.info("Iniciado test objeto de unidades disponibles negativas");
+        LOG.info("Iniciando test objeto de unidades disponibles negativas");
         assertThrows(Throwable.class, ()-> new Objeto("Retroexcavadora","23456",-2,50000));
         LOG.info("Finalizando test objeto de unidades disponibles negativas");
     }
     @Test
     public void objetoPrecioAlquilerNegativo() {
-        LOG.info("Iniciado test objeto con  negativas");
+        LOG.info("Iniciando test objeto con precio de alquiler negativo");
         assertThrows(Throwable.class, ()-> new Objeto("Retroexcavadora","23456",-2,50000));
         LOG.info("Finalizando test objeto con precio de alquiler negativo");
     }
 
     @Test
     public void modificarUnidadesDisponibles() {
-        LOG.info("Iniciado test modificar unidades disponibles");
+        LOG.info("Iniciando test modificar unidades disponibles");
         Objeto objeto = new Objeto("Retroexcavadora", "23456", 2, 50000);
         objeto.modificarUnidades(6);
         assertEquals(8,objeto.getUnidadesDisponibles());
-        LOG.info("Finalizando test test modificar unidades disponibles");
+        LOG.info("Finalizando test modificar unidades disponibles");
     }
     @Test
     public void verificarEstado() {
-        LOG.info("Iniciado test verificar estado");
+        LOG.info("Iniciando test verificar estado");
         Objeto objeto = new Objeto("Retroexcavadora", "23456", 2, 50000);
         assertTrue(objeto.isEstado());
         LOG.info("Finalizando test verificar estado");
     }
     @Test
     public void verificarPrestado() {
-        LOG.info("Iniciado test verificar prestado");
+        LOG.info("Iniciando test verificar prestado");
         Objeto objeto = new Objeto("Retroexcavadora", "23456", 2, 50000);
         objeto.setPrestado(true);
         assertTrue(objeto.isPrestado());

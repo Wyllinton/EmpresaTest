@@ -9,6 +9,7 @@
 package co.edu.uniquindio.poo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.LinkedList;
 import java.util.logging.Logger;
@@ -36,6 +37,14 @@ public class PrestamoTest {
         assertEquals(empleado,prestamo1.getEmpleado());
 
         LOG.info("Finalizando test de prestamo datos completos");
+    }
+    @Test 
+    public void prestamoDatosNulos(){
+         LOG.info("Iniciado test de prestamo datos nulos");
+
+        assertThrows(Throwable.class, () -> new Prestamo(null, 0, 0, null, null, null));
+        
+        LOG.info("Finalizando test de prestamo datos nulos");
     }
 
 }
