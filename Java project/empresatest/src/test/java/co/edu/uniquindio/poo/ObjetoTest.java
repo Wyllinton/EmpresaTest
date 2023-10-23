@@ -51,7 +51,7 @@ public class ObjetoTest {
     @Test
     public void objetoPrecioAlquilerNegativo() {
         LOG.info("Iniciando test objeto con precio de alquiler negativo");
-        assertThrows(Throwable.class, ()-> new Objeto("Retroexcavadora","23456",-2,50000));
+        assertThrows(Throwable.class, ()-> new Objeto("Retroexcavadora","23456",2,-50000));
         LOG.info("Finalizando test objeto con precio de alquiler negativo");
     }
 

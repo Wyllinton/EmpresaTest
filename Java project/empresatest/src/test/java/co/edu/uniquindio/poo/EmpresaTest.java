@@ -260,7 +260,7 @@ public class EmpresaTest {
         Objeto objeto = new Objeto("Retroexcavadora", "23476", 2, 50000);
         Objeto objeto1 = new Objeto("Cubo", "23156", 2, 5000);
         Objeto objeto2 = new Objeto("Libro", "22436", 2, 30000);
-        Objeto objeto3 = new Objeto("Crotolamo", "2e456", 2, 20000);
+        Objeto objeto3 = new Objeto("Crotolamo", "2456", 2, 20000);
         empresa.registrarObjeto(objeto);
         empresa.registrarObjeto(objeto1);
         empresa.registrarObjeto(objeto2);
@@ -273,7 +273,7 @@ public class EmpresaTest {
 
         LinkedList<Objeto> objetos = new LinkedList<>(empresa.getObjetos());
 
-        assertEquals(3, empresa.obtenerListaObjetosPrestadosMayorA20k(objetos).size() );
+        assertEquals(2, empresa.obtenerListaObjetosPrestadosMayorA20k(objetos).size() );
         LOG.info("Finalizando test objetos prestados mayor a 20000");
     }
     @Test 

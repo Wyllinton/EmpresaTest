@@ -277,7 +277,7 @@ public class Empresa {
     public Collection<Objeto> obtenerListaObjetosPrestadosMayorA20k(LinkedList<Objeto> objetos) {
         LinkedList<Objeto> objetosPrestadosMayor20k = new LinkedList<>();
         for (Objeto objeto : objetos) {
-            if (objeto.isPrestado() == true && objeto.getPrecioAlquiler() >= 20000) {
+            if (objeto.isPrestado() == true && objeto.getPrecioAlquiler() > 20000) {
                 objetosPrestadosMayor20k.add(objeto);
             }
         }
